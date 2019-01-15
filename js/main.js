@@ -46,7 +46,8 @@ function Setup()
   console.log(levels.length);
 
   SetupLevel(1);
-  CreateLevelWithOneModifier('resizeUp');
+  // CreateLevelWithOneModifier('resizeUp');
+  CreateLevelWithOneModifier('resizeDown');
 
   renderer.render(stage);
   

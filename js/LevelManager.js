@@ -31,7 +31,9 @@ function CreateLevelWithOneModifier(modifierType)
         break;
 
         case 'resizeDown':
-        oneModifier = new Sprite(resources['scaleDown']).texture;
+        oneModifier = new Sprite(Resources['scaleDown'].texture);
+        oneModifier.scale.set(0.5, 0.5);
+        oneModifier.position.set(xPositionForOneModifier - oneModifier.width / 2, renderer.heigth - 2 - oneModifier.width / 2);
         break;
 
         case 'colorize':
