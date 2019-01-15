@@ -17,3 +17,35 @@ function SetupLevel(level)
   CreateDesiredCharacter(finalColor, finalSize);
 
 }
+
+function CreateLevelWithOneModifier(modifierType)
+{
+    var xPositionForOneModifier = renderer.width / 2;
+
+    switch(modifierType)
+    {
+        case 'resizeUp':
+        oneModifier = new Sprite(Resources['scaleUp'].texture);
+        oneModifier.scale.set(0.5, 0.5);
+        oneModifier.position.set(xPositionForOneModifier - oneModifier.width / 2, renderer.heigth - 2 - oneModifier.width / 2);
+        break;
+
+        case 'resizeDown':
+        oneModifier = new Sprite(resources['scaleDown']).texture;
+        break;
+
+        case 'colorize':
+
+        break;
+
+    }
+    stage.addChild(oneModifier);
+
+}
+
+function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType)
+{
+    var xPositionForFirstModifier = renderer.width / 2 - 30;
+    var xPositionForSecondModifier = renderer.width / 2 + 30;
+
+}

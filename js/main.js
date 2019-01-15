@@ -13,15 +13,25 @@ document.getElementById('display').appendChild(renderer.view);
 //Alias
 let Loader = PIXI.loader;
 let Container = PIXI.Container;
+let Resources = Loader.resources;
+let Sprite = PIXI.Sprite;
 
 var stage = new Container();
+
+//Game Variables
 var character = new PIXI.Graphics();
 var desiredCharacter = new PIXI.Graphics();
+
+var oneModifier = new PIXI.Sprite();
+var firstModifier = new PIXI.Sprite();
+var secondModifier = new PIXI.Sprite();
 
 var levels;
 
 Loader
   .add('levels', 'json/levels.json')
+  .add('scaleUp','images/scaleUp.png')
+  .add('scaleDown', 'images/scaleDown.png')
   .load(Setup);
 
 
@@ -36,6 +46,7 @@ function Setup()
   console.log(levels.length);
 
   SetupLevel(1);
+  CreateLevelWithOneModifier('resizeUp');
 
   renderer.render(stage);
   
