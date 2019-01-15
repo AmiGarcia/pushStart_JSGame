@@ -16,6 +16,8 @@ let Container = PIXI.Container;
 
 var stage = new Container();
 var character = new PIXI.Graphics();
+var desiredCharacter = new PIXI.Graphics();
+
 var levels;
 
 Loader
@@ -43,24 +45,50 @@ function Setup()
 
 function SetupLevel(level)
 {
-  //Add one to get right level (we dont want levels begining with 0)
-  var currentLevel = levels[level + 1];
+  //Subtract one to get right level (we dont want levels begining with 0)
+  var currentLevel = levels[level -1];
+  var initial = currentLevel["initial"];
   //initial color of our character
-  var initialColor = currentLevel["initial"]["color"]; 
+  var initialColor = initial["color"]; 
   //initial size of our character. Multiplied by 20 cause 1 it's too small for screen
-  var initialSize = currentLevel["initial"]["size"] * 20; 
+  var initialSize = initial["size"] * 20; 
   //Now we can create our character for this level
   CreateCharacter(initialColor, initialSize);
+
+  //This is what our character has to be like, in the end of the level
+  var final = currentLevel["final"];
+  var finalColor = final["color"];
+  var finalSize = final["size"] * 20;
+  CreateDesiredCharacter(finalColor, finalSize);
 
 }
 
 function CreateCharacter(initialColor, initialSize)
 {
+  //setup with the right color from json
   character.beginFill(initialColor);
-  var y = renderer.width / 2;
-  character.drawRect(10, y, initialSize, initialSize);
-  //After this little setup, we can add it to stage and show it on screen
+  //this is our initial position
+  character.x = 100 - initialSize/2;
+  character.y = renderer.width / 2 - initialSize/2;
+  //draw the rect
+  character.drawRect(0, 0, initialSize, initialSize);
+  //after this little setup, we can add it to stage and show it
   stage.addChild(character);
+
+}
+
+function CreateDesiredCharacter(finalColor, finalSize)
+{
+  //setup with the right color from json
+  desiredCharacter.beginFill(finalColor);
+  //this is our initial position
+  desiredCharacter.x = renderer.width - 100 - finalSize/2;
+  desiredCharacter.y = renderer.width / 2 - finalSize/2;
+  //draw the rect
+  desiredCharacter.drawRect(0, 0, finalSize, finalSize);
+  //after this little setup, we can add it to stage and show it
+  stage.addChild(desiredCharacter);
+
 }
 
 //load an image and run the `setup` function when it's done
