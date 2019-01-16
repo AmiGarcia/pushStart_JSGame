@@ -16,6 +16,52 @@ function SetupLevel(level)
   var finalSize = final["size"] * 20;
   CreateDesiredCharacter(finalColor, finalSize);
 
+  if(currentLevel["modifiers"].length == 1)
+  {
+    if(currentLevel["modifiers"][0]["type"] == "resize")
+    {
+        if(currentLevel["modifiers"][0]["size"] == 2)
+            CreateLevelWithOneModifier('resizeUp');
+        else
+            CreateLevelWithOneModifier('resizeDown');
+    }else
+    {
+        CreateLevelWithOneModifier('colorize');
+    }
+        
+  }else
+  {
+    var first = currentLevel["modifiers"][0]["type"];
+    var second = currentLevel["modifiers"][1]["type"];
+    var firstProp;
+    var secondProp;
+
+    if(first == "resize")
+    {
+        if(currentLevel["modifiers"][0]["size"] == 2)
+            first = "resizeUp";
+        else
+            first = "resizeDown";
+    }else if(first == "colorize")
+    {
+        firstProp = currentLevel["modifiers"][0]["color"];
+    }
+
+    if(second == "resize")
+    {
+        if(currentLevel["modifiers"][1]["size"] == 2)
+            second = "resizeUp";
+        else
+            second = "resizeDown";
+    }else if(second == "colorize")
+    {
+        secondProp = currentLevel["modifiers"][1]["color"];
+    }
+
+    
+    CreateLevelWithTwoModifiers(first, second, firstProp, secondProp);
+  }
+
 }
 
 function CreateLevelWithOneModifier(modifierType, color)
