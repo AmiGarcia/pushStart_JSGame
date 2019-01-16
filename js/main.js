@@ -19,8 +19,8 @@ let Sprite = PIXI.Sprite;
 var stage = new Container();
 
 //Game Variables
-var character = new PIXI.Graphics();
-var desiredCharacter = new PIXI.Graphics();
+var character = new PIXI.Sprite();
+var desiredCharacter = new PIXI.Sprite();
 
 var oneModifier = new PIXI.Sprite();
 var firstModifier = new PIXI.Sprite();

@@ -26,7 +26,8 @@ function SetupLevel(level)
             CreateLevelWithOneModifier('resizeDown');
     }else
     {
-        CreateLevelWithOneModifier('colorize');
+        var color = currentLevel["modifiers"][0]["color"];
+        CreateLevelWithOneModifier('colorize', color);
     }
         
   }else
@@ -158,6 +159,10 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
 }
 
+function MoveToFirstPart()
+{
+    TweenLite.to(character, {rigth: 50});
+}
 
 // const sprite = new PIXI.Sprite(texture);
 // sprite.interactive = true;
