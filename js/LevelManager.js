@@ -1,6 +1,11 @@
 function SetupLevel()
 {
-  //Subtract one to get right level (we dont want levels begining with 0)
+  
+  text = new PIXI.Text(currentLevel["name"]);
+  text.x = 250;
+  text.y = 90;
+  text.anchor.set(0.5);
+  app.stage.addChild(text);
   
   var initial = currentLevel["initial"];
   //initial color of our character
@@ -193,6 +198,10 @@ function CheckIfLevelWasSuccessfull()
     {
         console.log("WIN LEVEL");
         WinLevel();
+    }else
+    {
+        CleanLevel();
+        SetupLevel();
     }
 }
 
@@ -209,6 +218,11 @@ function WinLevel()
     }else
     {
         console.log("FINISHED THE GAME!!!");
+        var winText = new PIXI.Text("Congrats! You win the game!");
+        winText.x = 250;
+        winText.y = 350;
+        winText.anchor.set(0.5);
+        app.stage.addChild(winText);
     }
 }
 
@@ -219,6 +233,7 @@ function CleanLevel()
     app.stage.removeChild(oneModifier);
     app.stage.removeChild(firstModifier);
     app.stage.removeChild(secondModifier);
+    app.stage.removeChild(text);
 
     
 }

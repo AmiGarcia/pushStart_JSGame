@@ -31,6 +31,8 @@ let Sprite = PIXI.Sprite;
 var stage = new Container();
 
 //Game Variables
+var title = new PIXI.Text();
+
 var character = new PIXI.Sprite();
 var squareTexture =  new PIXI.Graphics();
 var desiredCharacter = new PIXI.Sprite();
