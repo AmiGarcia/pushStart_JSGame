@@ -96,7 +96,6 @@ function WalkToDesiredCharacter()
 
 }
 
-// ----- Multiple modifiers ------- //
 function WalkToMultipleModifiers()
 {
     console.log("will tween");

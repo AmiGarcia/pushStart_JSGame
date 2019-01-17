@@ -97,11 +97,12 @@ function CreateLevelWithOneModifier(modifierType, color)
 
         case 'colorize':
         oneModifier = new PIXI.Graphics();
-        oneModifier.beginFill(color);
-        oneModifier.position.set(xPositionForOneModifier - 13 , app.renderer.view.width / 2 - 13);
+        var c = color.replace('#', '0x');
+        oneModifier.beginFill(c);
+        oneModifier.position.set(xPositionForOneModifier - 13 , app.renderer.view.width / 2 - 10);
         oneModifier.width = 20;
         console.log("one x: " + oneModifier.x);
-        oneModifier.drawRect(0, 0, 25, 25);
+        oneModifier.drawRect(0, 0, 20, 20);
         break;
 
     }
@@ -133,7 +134,8 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
         case 'colorize':
         firstModifier = new PIXI.Graphics();
-        firstModifier.beginFill(proModfier1);
+        var c = proModfier1.replace('#', '0x');
+        firstModifier.beginFill(c);
         firstModifier.position.set(xPositionForFirstModifier - 13 ,app.renderer.view.width / 2 - 13);
         firstModifier.width = 20;
         firstModifier.drawRect(0, 0, 25, 25);
@@ -158,7 +160,8 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
         case 'colorize':
         secondModifier = new PIXI.Graphics();
-        secondModifier.beginFill(propModifier2);
+        var c = propModifier2.replace('#', '0x');
+        firstModifier.beginFill(c);
         secondModifier.position.set(xPositionForSecondModifier - 13 , app.renderer.view.width / 2 - 13);
         secondModifier.width = 20;
         secondModifier.drawRect(0, 0, 25, 25);
