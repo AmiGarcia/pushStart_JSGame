@@ -63,59 +63,17 @@ function Setup()
   //firstLevel
   currentIndex = 0;
   currentLevel  = levels[currentIndex];
+  // currentLevel  = levels[4];
   SetupLevel();
   
 }
 
 function StartGame()
 {
-  WalkToSingleModifier();
+  if(currentLevel["modifiers"].length == 1)
+    WalkToSingleModifier();
+  else
+    WalkToMultipleModifiers();
 }
 
 
-function WalkToSingleModifier()
-{
- console.log("will tween");
- TweenMax.to(character, 1, {onComplete: ChooseModifier, pixi:{x: xPositionForOneModifier}});
- 
-}
-function ChooseModifier()
-{
-  console.log("do single modifier");
-  console.log("modifier type: " + currentLevel["modifiers"][0]["type"]);
-  if(currentLevel["modifiers"][0]["type"] == "resize" && currentLevel["modifiers"][0]["size"] == 2)
-  {
-   DoSingleModifier("resizeUp"); 
-  }
-  else if(currentLevel["modifiers"][0]["type"] == "resize" && currentLevel["modifiers"][0]["size"] == 1)
-  {
-   DoSingleModifier("resizeDown"); 
-  }
-  else if(currentLevel["modifiers"][0]["type"] == "colorize")
-  {
-   var color = currentLevel["modifiers"][0]["color"];
-   DoSingleModifier("colorize", color); 
-  }
-}
-
-function DoSingleModifier(modifier, color)
-{
-  switch(modifier)
-  {
-    case "resizeUp":
-    console.log("Go big");
-    TweenMax.to(character.scale, 1, {x:4, y:4});
-    break;
-
-    case "resizeDown":
-    console.log("Go small");
-    TweenMax.to(character.scale, 1, {x:0.5, y:0.5});
-    break;
-
-    case "colorize":
-    console.log("Colorize!");
-    TweenMax.to(character, 0, {pixi:{tint:color}});
-    break;
-
-  }
-}

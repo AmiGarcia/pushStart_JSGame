@@ -99,10 +99,12 @@ function CreateLevelWithOneModifier(modifierType, color)
 
 }
 
+var xPositionForFirstModifier = app.renderer.view.width / 2 - 50;
+var xPositionForSecondModifier = app.renderer.view.width / 2 + 50;
+
 function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proModfier1, propModifier2)
 {
-    var xPositionForFirstModifier = app.renderer.view.width / 2 - 50;
-    var xPositionForSecondModifier = app.renderer.view.width / 2 + 50;
+    
 
     switch(firstModifierType)
     {
