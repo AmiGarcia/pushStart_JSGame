@@ -12,12 +12,11 @@ function CreateCharacter(initialColor, initialSize)
   character.tint = color;
   character.width = initialSize;
   character.height = initialSize;
-
-
+  character.anchor.set(0.5);
 
   //this is our initial position
-  character.x = 100 - initialSize/2;
-  character.y = app.renderer.view.width / 2 - initialSize/2;
+  character.x = 100;
+  character.y = app.renderer.view.width / 2;
 
 
   character.hitArea = new PIXI.Rectangle(0, 0, 100, 100);
@@ -34,19 +33,18 @@ function CreateCharacter(initialColor, initialSize)
 
 function CreateDesiredCharacter(finalColor, finalSize)
 {
-  var squareTextureDesired =  new PIXI.Graphics();
   //setup with the right color from json (changing from #FFFFFF to 0xFFFFFF)
   var color = finalColor.replace('#', '0x');
   
-  squareTextureDesired.beginFill(color);
-  squareTextureDesired.drawRect(0, 0, finalSize, finalSize);
-  
-  var texture = squareTextureDesired.generateCanvasTexture();
-  desiredCharacter = new PIXI.Sprite(texture);
+  desiredCharacter = new PIXI.Sprite(PIXI.Texture.WHITE);
+  desiredCharacter.tint = color;
+  desiredCharacter.width = finalSize;
+  desiredCharacter.height = finalSize;
+  desiredCharacter.anchor.set(0.5);
 
   //this is our initial position
-  desiredCharacter.x = app.renderer.view.width - 100 - finalSize/2;
-  desiredCharacter.y = app.renderer.view.width / 2 - finalSize/2;
+  desiredCharacter.x = app.renderer.view.width - 100;
+  desiredCharacter.y = app.renderer.view.width / 2;
   //after this little setup, we can add it to stage and show it
   app.stage.addChild(desiredCharacter);
 

@@ -1,7 +1,7 @@
-function SetupLevel(level)
+function SetupLevel()
 {
   //Subtract one to get right level (we dont want levels begining with 0)
-  var currentLevel = levels[level -1];
+  
   var initial = currentLevel["initial"];
   //initial color of our character
   var initialColor = initial["color"]; 
