@@ -50,7 +50,7 @@ function DoSingleModifier(modifier, color)
 
     case "resizeDown":
     console.log("Go small");
-    TweenMax.to(character.scale, 1, {onComplete: ModifierDone, x:0.5, y:0.5});
+    TweenMax.to(character.scale, 1, {onComplete: ModifierDone, x:2, y:2});
     //TODO: hide modifier
     break;
 
@@ -88,7 +88,7 @@ function WalkToSecondModifier()
 function WalkToDesiredCharacter()
 {
  console.log("will tween");
- TweenMax.to(character, 1, {pixi:{x: desiredCharacter.x}});
+ TweenMax.to(character, 1, {onComplete: CheckIfLevelWasSuccessfull, pixi:{x: desiredCharacter.x}});
 
 }
 
@@ -100,3 +100,4 @@ function WalkToMultipleModifiers()
     TweenMax.to(character, 1, {onComplete: ChooseModifier, pixi:{x: xPositionForFirstModifier}});
 
 }
+

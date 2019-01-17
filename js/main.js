@@ -63,7 +63,7 @@ function Setup()
   //firstLevel
   currentIndex = 0;
   currentLevel  = levels[currentIndex];
-  // currentLevel  = levels[4];
+  // currentLevel  = levels[3];
   SetupLevel();
   
 }

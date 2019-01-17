@@ -166,11 +166,19 @@ function MoveToFirstPart()
     TweenLite.to(character, {rigth: 50});
 }
 
-// const sprite = new PIXI.Sprite(texture);
-// sprite.interactive = true;
-// sprite.buttonMode = true;
-// character
-// sprite.interactive = true;
-// sprite.on('tap', (event) => {
-//    //handle event
-// });
+
+function CheckIfLevelWasSuccessfull()
+{
+    console.log("character tint " + character.tint);
+    console.log("desired tint " + desiredCharacter.tint);
+    console.log("character width " + character.width);
+    console.log("desired width " + desiredCharacter.width);
+    console.log("character heigth " + character.height);
+    console.log("desired heigth " + desiredCharacter.height);
+    if(character.tint == desiredCharacter.tint && character.width == desiredCharacter.width &&
+        character.height == desiredCharacter.height)
+    {
+        console.log("WIN LEVEL");
+        //WinLevel();
+    }
+}
