@@ -1,14 +1,26 @@
 PIXI.utils.sayHello();
 
 //Create a Pixi Application
-var renderer = new PIXI.autoDetectRenderer(512, 512, 
-{ 
-  transparent: true, 
-  resolution: 1
+let app = new PIXI.Application({ 
+  width: 512,         // default: 800
+  height: 512,        // default: 600
+  antialias: true,    // default: false
+  transparent: true, // default: false
+  resolution: 1       // default: 1
 });
 
 //Add the canvas that Pixi automatically created for you to the HTML document
-document.getElementById('display').appendChild(renderer.view);
+document.body.appendChild(app.view);
+
+//Create a Pixi Application
+// var renderer = new PIXI.autoDetectRenderer(512, 512, 
+// {
+//   transparent: true, 
+//   resolution: 1
+// });
+
+//Add the canvas that Pixi automatically created for you to the HTML document
+// document.getElementById('display').appendChild(renderer.view);
 
 //Alias
 let Loader = PIXI.loader;
@@ -20,6 +32,7 @@ var stage = new Container();
 
 //Game Variables
 var character = new PIXI.Sprite();
+var squareTexture =  new PIXI.Graphics();
 var desiredCharacter = new PIXI.Sprite();
 
 var oneModifier = new PIXI.Sprite();
@@ -45,12 +58,46 @@ function Setup()
   console.log("level01 = " +  level01["initial"]["color"]);
   console.log(levels.length);
 
+
   SetupLevel(1);
-
-
-  renderer.render(stage);
   
 }
+
+function StartGame()
+{
+  WalkToSingleModifier();
+}
+
+
+function WalkToSingleModifier()
+{
+  
+
+  console.log("will tween");
+  // TweenLite.to(character,1, {pixi:{scaleX:2, scaleY:1.5}});
+  // TweenMax.to(character.scale, 1, {x:2, y:40});
+  // TweenMax.to(stage.position, 1, { x:400 } );
+  // TweenMax.to(squareTexture, 2, {pixi:{fillColor:"0x0000ff"}});
+
+ // Without the GSAP Plugin
+ TweenMax.to(character.position, 1, { x:400 } );
+ //With the GSAP Plugin
+ 
+}
+
+
+// //wait until DOM is ready
+// document.addEventListener("DOMContentLoaded", function(event) {  
+//   console.log("DOOOOM IS READY BABE");
+//   // wait until window is loaded - all images, links, css, scripts, fonts, and other media assets
+//   window.addEventListener("load", function(){ 
+//     console.log("EVERYTHING IS LOADED NOW");
+//        // run animation code here
+//        TweenMax.to(character, 2, {x:600});
+
+//   });
+// });
+
 
 
 

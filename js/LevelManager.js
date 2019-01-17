@@ -67,7 +67,7 @@ function SetupLevel(level)
 
 function CreateLevelWithOneModifier(modifierType, color)
 {
-    var xPositionForOneModifier = renderer.width / 2;
+    var xPositionForOneModifier = app.renderer.view.width/ 2;
     
 
     switch(modifierType)
@@ -75,54 +75,54 @@ function CreateLevelWithOneModifier(modifierType, color)
         case 'resizeUp':
         oneModifier = new Sprite(Resources['scaleUp'].texture);
         oneModifier.scale.set(0.5, 0.5);
-        oneModifier.position.set(xPositionForOneModifier - 13, renderer.width / 2 - 13);
+        oneModifier.position.set(xPositionForOneModifier - 13, app.renderer.view.width / 2 - 13);
 
         break;
 
         case 'resizeDown':
         oneModifier = new Sprite(Resources['scaleDown'].texture);
         oneModifier.scale.set(0.5, 0.5);
-        oneModifier.position.set(xPositionForOneModifier - 13, renderer.width / 2 - 13);
+        oneModifier.position.set(xPositionForOneModifier - 13, app.renderer.view.width / 2 - 13);
         break;
 
         case 'colorize':
         oneModifier = new PIXI.Graphics();
         oneModifier.beginFill(color);
-        oneModifier.position.set(xPositionForOneModifier - 13 , renderer.width / 2 - 13);
+        oneModifier.position.set(xPositionForOneModifier - 13 , app.renderer.view.width / 2 - 13);
         oneModifier.width = 20;
         console.log("one x: " + oneModifier.x);
         oneModifier.drawRect(0, 0, 25, 25);
         break;
 
     }
-    stage.addChild(oneModifier);
+    app.stage.addChild(oneModifier);
 
 }
 
 function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proModfier1, propModifier2)
 {
-    var xPositionForFirstModifier = renderer.width / 2 - 50;
-    var xPositionForSecondModifier = renderer.width / 2 + 50;
+    var xPositionForFirstModifier = app.renderer.view.width / 2 - 50;
+    var xPositionForSecondModifier = app.renderer.view.width / 2 + 50;
 
     switch(firstModifierType)
     {
         case 'resizeUp':
         firstModifier = new Sprite(Resources['scaleUp'].texture);
         firstModifier.scale.set(0.5, 0.5);
-        firstModifier.position.set(xPositionForFirstModifier - 13, renderer.width / 2 - 13);
+        firstModifier.position.set(xPositionForFirstModifier - 13, app.renderer.view.width / 2 - 13);
 
         break;
 
         case 'resizeDown':
         firstModifier = new Sprite(Resources['scaleDown'].texture);
         firstModifier.scale.set(0.5, 0.5);
-        firstModifier.position.set(xPositionForFirstModifier - 13, renderer.width / 2 - 13);
+        firstModifier.position.set(xPositionForFirstModifier - 13, app.renderer.view.width / 2 - 13);
         break;
 
         case 'colorize':
         firstModifier = new PIXI.Graphics();
         firstModifier.beginFill(proModfier1);
-        firstModifier.position.set(xPositionForFirstModifier - 13 , renderer.width / 2 - 13);
+        firstModifier.position.set(xPositionForFirstModifier - 13 ,app.renderer.view.width / 2 - 13);
         firstModifier.width = 20;
         firstModifier.drawRect(0, 0, 25, 25);
         break;
@@ -134,28 +134,28 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
         case 'resizeUp':
         secondModifier = new Sprite(Resources['scaleUp'].texture);
         secondModifier.scale.set(0.5, 0.5);
-        secondModifier.position.set(xPositionForSecondModifier - secondModifier.width / 2, renderer.width / 2 - secondModifier.width / 2);
+        secondModifier.position.set(xPositionForSecondModifier - secondModifier.width / 2, app.renderer.view.width / 2 - secondModifier.width / 2);
 
         break;
 
         case 'resizeDown':
         secondModifier = new Sprite(Resources['scaleDown'].texture);
         secondModifier.scale.set(0.5, 0.5);
-        secondModifier.position.set(xPositionForSecondModifier - secondModifier.width / 2, renderer.width / 2 - secondModifier.width / 2);
+        secondModifier.position.set(xPositionForSecondModifier - secondModifier.width / 2, app.renderer.view.width / 2 - secondModifier.width / 2);
         break;
 
         case 'colorize':
         secondModifier = new PIXI.Graphics();
         secondModifier.beginFill(propModifier2);
-        secondModifier.position.set(xPositionForSecondModifier - 13 , renderer.width / 2 - 13);
+        secondModifier.position.set(xPositionForSecondModifier - 13 , app.renderer.view.width / 2 - 13);
         secondModifier.width = 20;
         secondModifier.drawRect(0, 0, 25, 25);
         break;
 
     }
 
-    stage.addChild(firstModifier);
-    stage.addChild(secondModifier);
+    app.stage.addChild(firstModifier);
+    app.stage.addChild(secondModifier);
 
 }
 
@@ -167,7 +167,7 @@ function MoveToFirstPart()
 // const sprite = new PIXI.Sprite(texture);
 // sprite.interactive = true;
 // sprite.buttonMode = true;
-// const sprite = new PIXI.Sprite(texture);
+// character
 // sprite.interactive = true;
 // sprite.on('tap', (event) => {
 //    //handle event
