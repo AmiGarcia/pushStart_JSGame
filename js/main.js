@@ -39,6 +39,9 @@ var oneModifier = new PIXI.Sprite();
 var firstModifier = new PIXI.Sprite();
 var secondModifier = new PIXI.Sprite();
 
+var selectedCustomModifier;
+var customModifierProp;
+
 var levels;
 var currentLevel;
 var currentIndex;
@@ -63,7 +66,7 @@ function Setup()
   //firstLevel
   currentIndex = 0;
   currentLevel  = levels[currentIndex];
-  // currentLevel  = levels[3];
+  // currentLevel  = levels[4];
   SetupLevel();
   
 }

@@ -36,6 +36,10 @@ function ChooseModifier()
    var color = currentLevel["modifiers"][currentModifier]["color"];
    DoSingleModifier("colorize", color); 
   }
+  else if(currentLevel["modifiers"][currentModifier]["type"] == "select")
+  {
+    DoSingleModifier(selectedCustomModifier, customModifierProp); 
+  }
 }
 
 function DoSingleModifier(modifier, color)

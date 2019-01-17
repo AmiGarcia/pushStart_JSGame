@@ -16,19 +16,27 @@ function SetupLevel()
   var finalSize = final["size"] * 20;
   CreateDesiredCharacter(finalColor, finalSize);
 
-  if(currentLevel["modifiers"].length == 1)
+  if(currentLevel["modifiers"].length == 1 )
   {
-    if(currentLevel["modifiers"][0]["type"] == "resize")
-    {
-        if(currentLevel["modifiers"][0]["size"] == 2)
-            CreateLevelWithOneModifier('resizeUp');
-        else
-            CreateLevelWithOneModifier('resizeDown');
-    }else
-    {
-        var color = currentLevel["modifiers"][0]["color"];
-        CreateLevelWithOneModifier('colorize', color);
-    }
+      var typeModifier = currentLevel["modifiers"][0]["type"];
+      switch(typeModifier)
+      {
+          case "resize":
+            if(currentLevel["modifiers"][0]["size"] == 2)
+                CreateLevelWithOneModifier('resizeUp');
+            else
+                CreateLevelWithOneModifier('resizeDown');
+          break;
+          
+          case "colorize":
+            var color = currentLevel["modifiers"][0]["color"];
+            CreateLevelWithOneModifier('colorize', color);
+          break;
+
+          case "select":
+            CreateCustomLevel();
+          break;
+      }
         
   }else
   {
@@ -64,6 +72,8 @@ function SetupLevel()
   }
 
 }
+
+
 
 var xPositionForOneModifier = app.renderer.view.width/ 2;
 
@@ -179,6 +189,33 @@ function CheckIfLevelWasSuccessfull()
         character.height == desiredCharacter.height)
     {
         console.log("WIN LEVEL");
-        //WinLevel();
+        WinLevel();
     }
+}
+
+function WinLevel()
+{
+    currentIndex++;
+    console.log("Current index: " + currentIndex);
+    console.log("Current index: " + levels.length);
+    if(currentIndex <= levels.length - 1)
+    {
+        currentLevel = levels[currentIndex];
+        CleanLevel();
+        SetupLevel();
+    }else
+    {
+        console.log("FINISHED THE GAME!!!");
+    }
+}
+
+function CleanLevel()
+{
+    app.stage.removeChild(character);
+    app.stage.removeChild(desiredCharacter);
+    app.stage.removeChild(oneModifier);
+    app.stage.removeChild(firstModifier);
+    app.stage.removeChild(secondModifier);
+
+    
 }

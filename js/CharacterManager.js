@@ -19,7 +19,7 @@ function CreateCharacter(initialColor, initialSize)
   character.y = app.renderer.view.width / 2;
 
 
-  character.hitArea = new PIXI.Rectangle(0, 0, 100, 100);
+  character.hitArea = new PIXI.Rectangle(0, 0, 50, 50);
   character.interactive = true;
   character.buttonMode = true;
 
