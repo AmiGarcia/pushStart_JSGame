@@ -1,32 +1,40 @@
+//One of the main functions of this game. We use it to setup the whole level
+// and call whatever is needed to make it right
 function SetupLevel()
 {
-  
+  // This is our header. With the level's name!
   text = new PIXI.Text(currentLevel["name"]);
   text.x = 250;
   text.y = 90;
   text.anchor.set(0.5);
+  //never forget to add things to stage, otherwise... IT'S INVISIBLE! :O
   app.stage.addChild(text);
   
+  //little "alias" things to make our life easier. And last verbose!
   var initial = currentLevel["initial"];
   //initial color of our character
   var initialColor = initial["color"]; 
   //initial size of our character. Multiplied by 20 cause 1 it's too small for screen
   var initialSize = initial["size"] * 20; 
+
   //Now we can create our character for this level
   CreateCharacter(initialColor, initialSize);
 
-  //This is what our character has to be like, in the end of the level
+  //This is what our character has to be like, in the end of the level. OUR DESIRED CHARACTER!
   var final = currentLevel["final"];
   var finalColor = final["color"];
   var finalSize = final["size"] * 20;
   CreateDesiredCharacter(finalColor, finalSize);
 
+  //Here we need to check if the level has one modifier or two. To setup things properly
   if(currentLevel["modifiers"].length == 1 )
   {
       var typeModifier = currentLevel["modifiers"][0]["type"];
+      //We need to check te type of this single modifier. To make it visible for the player and have it's behaviour seted
       switch(typeModifier)
       {
           case "resize":
+          //if its resize up or down... we know here!
             if(currentLevel["modifiers"][0]["size"] == 2)
                 CreateLevelWithOneModifier('resizeUp');
             else
@@ -39,40 +47,50 @@ function SetupLevel()
           break;
 
           case "select":
+            //Create or last phase, the one which our player can chose
             CreateCustomLevel();
           break;
       }
         
   }else
   {
+    //if there is more than one modifier (duuh.. two!) set up here
     var first = currentLevel["modifiers"][0]["type"];
     var second = currentLevel["modifiers"][1]["type"];
     var firstProp;
     var secondProp;
 
-    if(first == "resize")
+    //get what first modifier really is
+    switch(first)
     {
-        if(currentLevel["modifiers"][0]["size"] == 2)
-            first = "resizeUp";
-        else
-            first = "resizeDown";
-    }else if(first == "colorize")
-    {
-        firstProp = currentLevel["modifiers"][0]["color"];
+        case "resize":
+            if(currentLevel["modifiers"][0]["size"] == 2)
+                first = "resizeUp";
+            else
+                first = "resizeDown";
+        break;
+
+        case "colorize":
+            firstProp = currentLevel["modifiers"][0]["color"];
+        break;
     }
 
-    if(second == "resize")
+    //and do the same for second
+    switch(second)
     {
-        if(currentLevel["modifiers"][1]["size"] == 2)
-            second = "resizeUp";
-        else
-            second = "resizeDown";
-    }else if(second == "colorize")
-    {
-        secondProp = currentLevel["modifiers"][1]["color"];
+        case "resize":
+            if(currentLevel["modifiers"][1]["size"] == 2)
+                second = "resizeUp";
+            else
+                second = "resizeDown";
+        break;
+
+        case "colorize":
+            secondProp = currentLevel["modifiers"][1]["color"];
+        break;
     }
 
-    
+    //now that we already know which modifiers we're dealing with... CREATE OUR LEVEL!
     CreateLevelWithTwoModifiers(first, second, firstProp, secondProp);
   }
 

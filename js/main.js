@@ -1,26 +1,17 @@
+//Dont be rude, say hello
 PIXI.utils.sayHello();
 
 //Create a Pixi Application
 let app = new PIXI.Application({ 
-  width: 512,         // default: 800
-  height: 512,        // default: 600
-  antialias: true,    // default: false
-  transparent: true, // default: false
-  resolution: 1       // default: 1
+  width: 512,        
+  height: 512,       
+  antialias: true,   
+  transparent: true, 
+  resolution: 1       
 });
 
 //Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
-
-//Create a Pixi Application
-// var renderer = new PIXI.autoDetectRenderer(512, 512, 
-// {
-//   transparent: true, 
-//   resolution: 1
-// });
-
-//Add the canvas that Pixi automatically created for you to the HTML document
-// document.getElementById('display').appendChild(renderer.view);
 
 //Alias
 let Loader = PIXI.loader;
@@ -48,6 +39,7 @@ var levels;
 var currentLevel;
 var currentIndex;
 
+//Here we are loading every resource needed
 Loader
   .add('levels', 'json/levels.json')
   .add('scaleUp','images/scaleUp.png')
@@ -55,20 +47,17 @@ Loader
   .load(Setup);
 
 
+// When resource is loaded, we call this callback
+// Here we will call every game setup and stuff
 function Setup()
 {
   //load levels from our loader
   levels = Loader.resources.levels.data;
-  console.log(JSON.stringify(levels[0]));
-  console.log(JSON.stringify(levels[1]));
-  var level01 = levels[0];
-  console.log("level01 = " +  level01["initial"]["color"]);
-  console.log(levels.length);
 
-  //firstLevel
+  //Set current level index to zero and current level to first
   currentIndex = 0;
   currentLevel  = levels[currentIndex];
-  // currentLevel  = levels[4];
+  //now that we're ready, setup level and afterwards start the game
   SetupLevel();
   
 }
