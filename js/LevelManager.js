@@ -216,6 +216,8 @@ function CheckIfLevelWasSuccessfull()
     }
 }
 
+//If you win the level, this function is called and see if there is more levels to play
+//otherwise you win the game
 function WinLevel()
 {
     currentIndex++;
@@ -237,6 +239,7 @@ function WinLevel()
     }
 }
 
+// Clean the level in scene. Remove any childs and prepare to another
 function CleanLevel()
 {
     app.stage.removeChild(character);
