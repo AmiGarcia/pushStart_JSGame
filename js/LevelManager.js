@@ -65,10 +65,10 @@ function SetupLevel(level)
 
 }
 
+var xPositionForOneModifier = app.renderer.view.width/ 2;
+
 function CreateLevelWithOneModifier(modifierType, color)
 {
-    var xPositionForOneModifier = app.renderer.view.width/ 2;
-    
 
     switch(modifierType)
     {

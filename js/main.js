@@ -71,49 +71,8 @@ function StartGame()
 
 function WalkToSingleModifier()
 {
-  
-
   console.log("will tween");
-  // TweenLite.to(character,1, {pixi:{scaleX:2, scaleY:1.5}});
-  // TweenMax.to(character.scale, 1, {x:2, y:40});
-  // TweenMax.to(stage.position, 1, { x:400 } );
-  // TweenMax.to(squareTexture, 2, {pixi:{fillColor:"0x0000ff"}});
-
- // Without the GSAP Plugin
- TweenMax.to(character.position, 1, { x:400 } );
- //With the GSAP Plugin
+//  TweenMax.to(character, 1, {pixi:{x: xPositionForOneModifier - 11 }});
+ TweenMax.to(character, 0, {pixi:{tint:"purple"}});
  
 }
-
-
-// //wait until DOM is ready
-// document.addEventListener("DOMContentLoaded", function(event) {  
-//   console.log("DOOOOM IS READY BABE");
-//   // wait until window is loaded - all images, links, css, scripts, fonts, and other media assets
-//   window.addEventListener("load", function(){ 
-//     console.log("EVERYTHING IS LOADED NOW");
-//        // run animation code here
-//        TweenMax.to(character, 2, {x:600});
-
-//   });
-// });
-
-
-
-
-
-
-//load an image and run the `setup` function when it's done
-// PIXI.loader
-//   .add("images/cat.png")
-//   .load(setup);
-
-// //This `setup` function will run when the image has loaded
-// function setup() {
-
-//   //Create the cat sprite
-//   let cat = new PIXI.Sprite(PIXI.loader.resources["images/cat.png"].texture);
-  
-//   //Add the cat to the stage
-//   app.stage.addChild(cat);
-// }

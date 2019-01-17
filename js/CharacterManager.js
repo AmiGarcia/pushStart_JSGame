@@ -4,11 +4,16 @@ function CreateCharacter(initialColor, initialSize)
 {  
   //setup with the right color from json (changing from #FFFFFF to 0xFFFFFF)
   var color = initialColor.replace('#', '0x');
-  squareTexture.beginFill(color);
-  squareTexture.drawRect(0, 0, initialSize, initialSize);
+//   squareTexture.beginFill(color);
+//   squareTexture.drawRect(0, 0, initialSize, initialSize);
   
-  var texture = squareTexture.generateCanvasTexture();
-  character = new PIXI.Sprite(texture);
+//   var texture = squareTexture.generateCanvasTexture();
+  character = new PIXI.Sprite(PIXI.Texture.WHITE);
+  character.tint = color;
+  character.width = initialSize;
+  character.height = initialSize;
+
+
 
   //this is our initial position
   character.x = 100 - initialSize/2;
