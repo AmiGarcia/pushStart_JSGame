@@ -1,3 +1,12 @@
+
+// I have divided the whole "walk" animations in two parts
+// 1) Walk to Modifiers
+// 2) Do the modifier
+// 3) Walk to another modifier (if the level has another one)
+// 4) Go to our desired character and compare if they are the same (Win and lost condition)
+
+
+
 var currentModifier = 0;
 var doneFirstModifier = false;
 

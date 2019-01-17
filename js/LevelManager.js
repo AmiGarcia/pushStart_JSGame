@@ -97,19 +97,19 @@ function SetupLevel()
 }
 
 
-
+//this is our x position for one modifier level
 var xPositionForOneModifier = app.renderer.view.width/ 2;
 
+//Create a level with only one modifier
 function CreateLevelWithOneModifier(modifierType, color)
 {
-
+    //get the type and set stuff according to it
     switch(modifierType)
     {
         case 'resizeUp':
         oneModifier = new Sprite(Resources['scaleUp'].texture);
         oneModifier.scale.set(0.5, 0.5);
         oneModifier.position.set(xPositionForOneModifier - 13, app.renderer.view.width / 2 - 13);
-
         break;
 
         case 'resizeDown':
@@ -120,33 +120,33 @@ function CreateLevelWithOneModifier(modifierType, color)
 
         case 'colorize':
         oneModifier = new PIXI.Graphics();
+        //we have to change the color type from # to 0x
         var c = color.replace('#', '0x');
         oneModifier.beginFill(c);
         oneModifier.position.set(xPositionForOneModifier - 13 , app.renderer.view.width / 2 - 10);
         oneModifier.width = 20;
-        console.log("one x: " + oneModifier.x);
         oneModifier.drawRect(0, 0, 20, 20);
         break;
 
     }
+    //now that we've already setted. Add it to stage
     app.stage.addChild(oneModifier);
 
 }
 
+//positions for modifiers in level with two
 var xPositionForFirstModifier = app.renderer.view.width / 2 - 50;
 var xPositionForSecondModifier = app.renderer.view.width / 2 + 50;
 
 function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proModfier1, propModifier2)
 {
-    
-
+    //get the type again for the first modifier
     switch(firstModifierType)
     {
         case 'resizeUp':
         firstModifier = new Sprite(Resources['scaleUp'].texture);
         firstModifier.scale.set(0.5, 0.5);
         firstModifier.position.set(xPositionForFirstModifier - 13, app.renderer.view.width / 2 - 13);
-
         break;
 
         case 'resizeDown':
@@ -157,6 +157,7 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
         case 'colorize':
         firstModifier = new PIXI.Graphics();
+        //same stuff with color type
         var c = proModfier1.replace('#', '0x');
         firstModifier.beginFill(c);
         firstModifier.position.set(xPositionForFirstModifier - 13 ,app.renderer.view.width / 2 - 13);
@@ -166,6 +167,7 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
     }
 
+    //and now for the second modifier
     switch(secondModifierType)
     {
         case 'resizeUp':
@@ -192,25 +194,16 @@ function CreateLevelWithTwoModifiers(firstModifierType, secondModifierType, proM
 
     }
 
+    //now add them to stage!
     app.stage.addChild(firstModifier);
     app.stage.addChild(secondModifier);
 
 }
 
-function MoveToFirstPart()
-{
-    TweenLite.to(character, {rigth: 50});
-}
 
-
+//Here we check if the level was completed with success or not (our win and lost condition)
 function CheckIfLevelWasSuccessfull()
 {
-    console.log("character tint " + character.tint);
-    console.log("desired tint " + desiredCharacter.tint);
-    console.log("character width " + character.width);
-    console.log("desired width " + desiredCharacter.width);
-    console.log("character heigth " + character.height);
-    console.log("desired heigth " + desiredCharacter.height);
     if(character.tint == desiredCharacter.tint && character.width == desiredCharacter.width &&
         character.height == desiredCharacter.height)
     {
