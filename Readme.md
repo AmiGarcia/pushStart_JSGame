@@ -1,4 +1,4 @@
-# Javascript Game
+# Javascript Game (Made in less then 24h in a first glance of javascript games)
 #### By Aiami Garcia
 
 # How to play?
